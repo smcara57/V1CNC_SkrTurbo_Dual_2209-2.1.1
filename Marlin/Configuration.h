@@ -1162,7 +1162,7 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT { 200, 200, 800 } // { 200, 200, 800, 200 } // { 80, 80, 400, 500 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT { 160, 160, 400 } // { 200, 200, 800, 200 } // { 80, 80, 400, 500 }
 
 /**
  * Default Max Feed Rate (linear=mm/s, rotational=°/s)
@@ -1288,8 +1288,7 @@
  *      - normally-closed switches to GND and D32.
  *      - normally-open switches to 5V and D32.
  */
-//#define Z_MIN_PROBE_PIN 32 // Pin 32 is the RAMPS default
-
+#define Z_MIN_PROBE_PIN P0_10 // RSM SKR 1.4 Turbo default
 /**
  * Probe Type
  *
@@ -1308,7 +1307,7 @@
  * A Fix-Mounted Probe either doesn't deploy or needs manual deployment.
  *   (e.g., an inductive probe or a nozzle-based probe-switch.)
  */
-//#define FIX_MOUNTED_PROBE
+#define FIX_MOUNTED_PROBE
 
 /**
  * Use the nozzle as the probe, as with a conductive
@@ -1477,7 +1476,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0 }
+#define NOZZLE_TO_PROBE_OFFSET { 0, 0, 0 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1688,8 +1687,8 @@
 // @section geometry
 
 // The size of the printable area
-#define X_BED_SIZE 1220 // 200
-#define Y_BED_SIZE 2440 // 200
+#define X_BED_SIZE 1219 // 4 feet Length
+#define Y_BED_SIZE  609 // 2 feet Width
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -2080,11 +2079,11 @@
  * - Allows Z homing only when XY positions are known and trusted.
  * - If stepper drivers sleep, XY homing may be required again before Z homing.
  */
-//#define Z_SAFE_HOMING
+#define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT X_CENTER  // X point for Z homing
-  #define Z_SAFE_HOMING_Y_POINT Y_CENTER  // Y point for Z homing
+  #define Z_SAFE_HOMING_X_POINT 10 // X_CENTER  // X point for Z homing
+  #define Z_SAFE_HOMING_Y_POINT 10 // Y_CENTER  // Y point for Z homing
 #endif
 
 // Homing speeds (linear=mm/min, rotational=°/min)
@@ -3338,5 +3337,7 @@
 #define SHORT_BUILD_VERSION "515D 2.1.1"
 #define Y_MAX_PIN E1_DIAG_PIN
 #define X_MAX_PIN E0_DIAG_PIN
-#define Z_MIN_PIN P1_27
+//#define Z_MIN_PIN P1_27
 #define Z_MAX_PIN P1_00
+#define NO_AUTO_ASSIGN_WARNING
+#define DIAG_PINS_REMOVED
