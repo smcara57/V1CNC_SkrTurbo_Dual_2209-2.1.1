@@ -3,3 +3,4 @@
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/ipch
+buildroot/share/PlatformIO/scripts/__pycache__/pioutil.cpython-39.pyc
