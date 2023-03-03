@@ -3830,7 +3830,7 @@
   //#define MAIN_MENU_ITEM_2_CONFIRM
 
   #define MAIN_MENU_ITEM_3_DESC "Probe Z Axis"
-  #define MAIN_MENU_ITEM_3_GCODE "G30 X10 Y10" // Probe Z (Offset by 10,10)
+  #define MAIN_MENU_ITEM_3_GCODE "G38.2 X10 Y10\nG0 X0 Y0" // Probe Z (Offset by 10,10)
   //#define MAIN_MENU_ITEM_3_CONFIRM
 
   #define MAIN_MENU_ITEM_4_DESC "Set Home Coordinates"
