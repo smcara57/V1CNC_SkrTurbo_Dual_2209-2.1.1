@@ -1,13 +1,9 @@
 .pio
 .vscode/.browse.c_cpp.db*
+.vscode/ipch
 .vscode/c_cpp_properties.json
 .vscode/launch.json
-.vscode/ipch
-<<<<<<< HEAD
-*.pyc
-platform.ini
-=======
-platformio.ini
 .vscode/settings.json
->>>>>>> c902e9d50ad60d762c7c8bb263792b82556291fc
+*.pyc
+platformio.ini
 git_diff.txt
