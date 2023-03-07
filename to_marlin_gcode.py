@@ -7,7 +7,7 @@ try:
     sys.argv[1]
     sys.argv[2]
 except IndexError:
-  print "usage: ./to_marlin_gcode origin.nc origin_marlin.gcode"
+  print("usage: ./to_marlin_gcode origin.nc origin_marlin.gcode")
   exit()
 
 # default values
