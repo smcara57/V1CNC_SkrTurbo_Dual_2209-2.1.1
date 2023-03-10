@@ -1,5 +1,3 @@
-#define ST7920_DELAY_3 DELAY_NS(250)
-#define ST7920_DELAY_2 DELAY_NS(250)
 /**
  * Marlin 3D Printer Firmware
  * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
@@ -38,6 +36,10 @@
  * Advanced settings can be found in Configuration_adv.h
  */
 #define CONFIGURATION_H_VERSION 02010100
+
+#define SHORT_BUILD_VERSION "515D 2.1.1.a"
+#define NO_AUTO_ASSIGN_WARNING
+#define DIAG_PINS_REMOVED
 
 //===========================================================================
 //============================= Getting Started =============================
@@ -1026,6 +1028,10 @@
 // Specify here all the endstop connectors that are connected to any endstop or probe.
 // Almost all printers will be using one per axis. Probes will use one or more of the
 // extra connectors. Leave undefined any used for non-endstop and non-probe purposes.
+
+#define Y_MAX_PIN E1_DIAG_PIN
+#define X_MAX_PIN E0_DIAG_PIN
+
 #define USE_XMIN_PLUG
 #define USE_YMIN_PLUG
 #define USE_ZMIN_PLUG
@@ -1114,7 +1120,7 @@
 #define U_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define V_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define W_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define Z_MIN_PROBE_ENDSTOP_INVERTING false // Set to true to invert the logic of the probe.
+#define Z_MIN_PROBE_ENDSTOP_INVERTING true // Set to true to invert the logic of the probe.
 
 // Enable this feature if all enabled endstop pins are interrupt-capable.
 // This will remove the need to poll the interrupt pins, saving many CPU cycles.
@@ -1161,8 +1167,11 @@
  * Default Axis Steps Per Unit (linear=steps/mm, rotational=steps/°)
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
+ *
+ * RSM XY Steps = 200 revolutions per mm, 1/32 uStep driver, 2mm belt pitch, 20 teeth count = 160
+ *     Z  Steps = 200 revolutions per mm, 1/32 uStep driver, leadscrew pitch 8 mm/rev = 800
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT { 160, 160, 400 } // { 200, 200, 800, 200 } // { 80, 80, 400, 500 }  //RSM
+#define DEFAULT_AXIS_STEPS_PER_UNIT { 160, 160, 800 } // { 80, 80, 400, 500 }
 
 /**
  * Default Max Feed Rate (linear=mm/s, rotational=°/s)
@@ -1268,7 +1277,7 @@
  * The probe replaces the Z-MIN endstop and is used for Z homing.
  * (Automatically enables USE_PROBE_FOR_Z_HOMING.)
  */
-//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+// #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 // Force the use of the probe for Z-axis homing
 #define USE_PROBE_FOR_Z_HOMING
@@ -1287,8 +1296,10 @@
  *    - For simple switches connect...
  *      - normally-closed switches to GND and D32.
  *      - normally-open switches to 5V and D32.
+ *
+ * RSM SKR 1.4 Turbo Use Z_STOP_PIN = P1_27, Z_MIN_PROBE_PIN (default) = P0_10
  */
-#define Z_MIN_PROBE_PIN P0_10 // RSM SKR 1.4 Turbo default
+//#define Z_MIN_PROBE_PIN P1_27
 
 /**
  * Probe Type
@@ -1557,7 +1568,7 @@
 #define Z_CLEARANCE_DEPLOY_PROBE   10 // Z Clearance for Deploy/Stow
 #define Z_CLEARANCE_BETWEEN_PROBES  5 // Z Clearance between probe points
 #define Z_CLEARANCE_MULTI_PROBE     5 // Z Clearance between multiple probes
-//#define Z_AFTER_PROBING           5 // Z position after probing is done
+#define Z_AFTER_PROBING             0 // Z position after probing is done (RSM 14 is probe height)
 
 #define Z_PROBE_LOW_POINT          -2 // Farthest distance below the trigger-point to go before stopping
 
@@ -1725,7 +1736,7 @@
 #if ENABLED(MIN_SOFTWARE_ENDSTOPS)
   #define MIN_SOFTWARE_ENDSTOP_X
   #define MIN_SOFTWARE_ENDSTOP_Y
-  //#define MIN_SOFTWARE_ENDSTOP_Z
+  #define MIN_SOFTWARE_ENDSTOP_Z
   #define MIN_SOFTWARE_ENDSTOP_I
   #define MIN_SOFTWARE_ENDSTOP_J
   #define MIN_SOFTWARE_ENDSTOP_K
@@ -3335,10 +3346,3 @@
 
 // Disable servo with M282 to reduce power consumption, noise, and heat when not in use
 //#define SERVO_DETACH_GCODE
-#define SHORT_BUILD_VERSION "515D 2.1.1"
-#define Y_MAX_PIN E1_DIAG_PIN
-#define X_MAX_PIN E0_DIAG_PIN
-//#define Z_MIN_PIN P1_27
-#define Z_MAX_PIN P1_00
-#define NO_AUTO_ASSIGN_WARNING
-#define DIAG_PINS_REMOVED
