@@ -4,7 +4,6 @@
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/settings.json
-*.pyc
 platformio.ini
 git_diff.txt
-buildroot/share/PlatformIO/scripts/__pycache__/pioutil.cpython-39.pyc
+buildroot/share/PlatformIO/scripts/__pycache__/*.pyc
