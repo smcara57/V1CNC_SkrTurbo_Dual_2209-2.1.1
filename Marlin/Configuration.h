@@ -37,7 +37,7 @@
  */
 #define CONFIGURATION_H_VERSION 02010100
 
-#define SHORT_BUILD_VERSION "515D 2.1.1.a"
+#define SHORT_BUILD_VERSION "515D 2.1.1.b"
 #define NO_AUTO_ASSIGN_WARNING
 #define DIAG_PINS_REMOVED
 
@@ -1297,9 +1297,9 @@
  *      - normally-closed switches to GND and D32.
  *      - normally-open switches to 5V and D32.
  *
- * RSM SKR 1.4 Turbo Use Z_STOP_PIN = P1_27, Z_MIN_PROBE_PIN (default) = P0_10
+ * RSM SKR 1.4 Turbo Use Z_STOP_PIN = P1_27 or Z_MIN_PROBE_PIN (default) = P0_10
  */
-//#define Z_MIN_PROBE_PIN P1_27
+#define Z_MIN_PROBE_PIN P0_10
 
 /**
  * Probe Type
