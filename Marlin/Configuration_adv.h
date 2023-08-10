@@ -2264,7 +2264,7 @@
  * and optionally G38.4 and G38.5 (probe away from target).
  * Set MULTIPLE_PROBING for G38 to probe more than once.
  */
-//#define G38_PROBE_TARGET
+#define G38_PROBE_TARGET
 #if ENABLED(G38_PROBE_TARGET)
   //#define G38_PROBE_AWAY        // Include G38.4 and G38.5 to probe away from target
   #define G38_MINIMUM_MOVE 0.0275 // (mm) Minimum distance that will produce a move.
@@ -3823,25 +3823,22 @@
   //#define CUSTOM_MENU_MAIN_SCRIPT_RETURN   // Return to status screen after a script
   #define CUSTOM_MENU_MAIN_ONLY_IDLE         // Only show custom menu when the machine is idle
 
-  #define MAIN_MENU_ITEM_1_DESC "Home All"
-  #define MAIN_MENU_ITEM_1_GCODE "G28" // Home X Y and Z Axis and display settings
+  // #define MAIN_MENU_ITEM_1_DESC "Home All"
+  // #define MAIN_MENU_ITEM_1_GCODE "G28 X0 Y0 Z20" // Home X Y and Z Axis and display settings
   //#define MAIN_MENU_ITEM_1_CONFIRM
 
-  #define MAIN_MENU_ITEM_2_DESC "Home X&Y"
-  #define MAIN_MENU_ITEM_2_GCODE "G28 X Y" // Home X & Y
-  //#define MAIN_MENU_ITEM_2_CONFIRM
+  #define MAIN_MENU_ITEM_1_DESC "Home X & Y"
+  #define MAIN_MENU_ITEM_1_GCODE "G28 X0 Y0\nG92 X0 Y0" // Home X & Y
 
-  #define MAIN_MENU_ITEM_3_DESC "Probe Z Axis"
-  #define MAIN_MENU_ITEM_3_GCODE "G38.2 X10 Y10\nG0 X0 Y0" // Probe Z (Offset by 10,10)
-  //#define MAIN_MENU_ITEM_3_CONFIRM
+  #define MAIN_MENU_ITEM_2_DESC "Probe Z Axis"
+  #define MAIN_MENU_ITEM_2_GCODE "G38.2 X10 Y10\nG92 Z14\nG0 X0 Y0 Z20" // Probe Z (Offset by 10,10)
 
-  #define MAIN_MENU_ITEM_4_DESC "Set Home Coordinates"
-  #define MAIN_MENU_ITEM_4_GCODE "G92 X0 Y0 Z0" // Set current position to Home
+  #define MAIN_MENU_ITEM_3_DESC "Set Home Coordinates"
+  #define MAIN_MENU_ITEM_3_GCODE "G92 X0 Y0 Z0" // Set current position to Home
+
+  //#define MAIN_MENU_ITEM_4_DESC "Home & Info"
+  //#define MAIN_MENU_ITEM_4_GCODE "G28\nM503"
   //#define MAIN_MENU_ITEM_4_CONFIRM
-
-  //#define MAIN_MENU_ITEM_5_DESC "Home & Info"
-  //#define MAIN_MENU_ITEM_5_GCODE "G28\nM503"
-  //#define MAIN_MENU_ITEM_5_CONFIRM
 #endif
 
 // @section custom config menu
