@@ -9,3 +9,4 @@ buildroot/share/PlatformIO/scripts/__pycache__/*.pyc
 platformio.ini
 Marlin/Marlin.ino.cpp
 buildroot/share/scripts/__pycache__/MarlinBinaryProtocol.cpython-39.pyc
+buildroot/share/scripts/__pycache__/MarlinBinaryProtocol.cpython-311.pyc
