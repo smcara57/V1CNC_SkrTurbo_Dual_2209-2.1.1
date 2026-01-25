@@ -1299,7 +1299,7 @@
  *
  * RSM SKR 1.4 Turbo Use Z_STOP_PIN = P1_27 or Z_MIN_PROBE_PIN (default) = P0_10
  */
-#define Z_MIN_PROBE_PIN P0_10
+//#define Z_MIN_PROBE_PIN P0_10
 
 /**
  * Probe Type
